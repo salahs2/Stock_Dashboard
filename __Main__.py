@@ -1,5 +1,3 @@
-# python3 -m venv venv
-# . venv/bin/activate (Activate Virtual Environmetn)
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -51,7 +49,7 @@ app.layout = dbc.Container([
 
     # dbc.Row([
     #         dbc.Col([
-    #         dcc.Checklist(id='my-checklist', value=['SPY', 'GOOGL', 'AMZN'],
+    #         dcc.Checklist(id='my-checklist', value=['SPY'],
     #                       options=[{'label':x, 'value':x}
     #                                for x in sorted(df['Symbols'].unique())],
     #                       labelClassName="mr-md-5"), #label spacing not working fix later
@@ -82,17 +80,6 @@ def update_graph(stock_slctd):
     figln2 = px.line(dff, x='Date', y='Adj Close', color='Symbols')
     return figln2
 
-
-# Histogram
-# @app.callback(
-#     Output('my-hist', 'figure'),
-#     Input('my-checklist', 'value')
-# )
-# def update_graph(stock_slctd):
-#     dff = df[df['Symbols'].isin(stock_slctd)]
-#     dff = dff[dff['Date']=='2020-12-03']
-#     fighist = px.histogram(dff, x='Symbols', y='Close')
-#     return fighist
 
 if __name__ == '__main__':    
     app.run_server(debug=True, port=3000)
